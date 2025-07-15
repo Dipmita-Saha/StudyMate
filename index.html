@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Study Planner - Organize Your Study Goals</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="#weekly">Weekly Planner</a></li>
+        <li><a href="#daily">Daily Tasks</a></li>
+        <li><a href="#subjects">Subjects</a></li>
+        <li><a href="#progress">Progress</a></li>
+      </ul>
+    </nav>
+    <div class="main-content">
+      <header>
+        <h1>Welcome to Smart Study Planner!</h1>
+        <p id="current-date"></p>
+      </header>
+      <main>
+        <section id="weekly">
+          <h2>Weekly Planner</h2>
+          <div class="weekly-grid" id="weekly-grid">
+            <!-- Days will be rendered here by JS -->
+          </div>
+
+          <!-- Task Modal (hidden by default) -->
+          <div id="task-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+              <span class="close" id="close-task-modal">&times;</span>
+              <form id="task-form">
+                <input type="hidden" id="task-id" />
+                <input type="hidden" id="task-day" />
+                <label>
+                  Task:
+                  <input type="text" id="task-name" required />
+                </label>
+                <label>
+                  Subject:
+                  <select id="task-subject"></select>
+                </label>
+                <label>
+                  Priority:
+                  <select id="task-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+                <button type="submit">Save Task</button>
+                <button type="button" id="cancel-task">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </section>
+        <section id="daily">
+          <h2>Daily Tasks</h2>
+          <ul id="daily-task-list" class="daily-task-list"></ul>
+          <p id="no-daily-tasks" style="display:none;">No tasks for today! 🎉</p>
+        </section>
+        <section id="subjects">
+          <h2>Subjects</h2>
+          <form id="subject-form">
+            <input type="hidden" id="subject-id" />
+            <label>
+              Name:
+              <input type="text" id="subject-name" required />
+            </label>
+            <label>
+              Color:
+              <input type="color" id="subject-color" value="#4F8A8B" />
+            </label>
+            <label>
+              Icon:
+              <select id="subject-icon">
+                <option value="📚">📚 Book</option>
+                <option value="🧪">🧪 Science</option>
+                <option value="📝">📝 Notes</option>
+                <option value="🔬">🔬 Lab</option>
+                <option value="💻">💻 Computer</option>
+                <option value="🎨">🎨 Art</option>
+                <option value="🎵">🎵 Music</option>
+                <option value="🌍">🌍 Geography</option>
+                <option value="➕">➕ Math</option>
+              </select>
+            </label>
+            <button type="submit">Add Subject</button>
+            <button type="button" id="cancel-edit" style="display:none;">Cancel</button>
+          </form>
+          <ul id="subject-list"></ul>
+        </section>
+        <section id="progress">
+          <h2>Progress</h2>
+          <div class="progress-stats">
+            <div>Completed Tasks: <span id="completed-count">0</span></div>
+            <div>Total Tasks: <span id="total-count">0</span></div>
+            <div>Rescheduled Tasks: <span id="rescheduled-count">0</span></div>
+            <div>Weekly Completion Rate: <span id="weekly-rate">0%</span></div>
+          </div>
+          <canvas id="progress-pie" width="220" height="220" style="margin-top:1.5rem;"></canvas>
+        </section>
+      </main>
+      <footer>
+        <p>&copy; 2025 Smart Study Planner</p>
+      </footer>
+      <div class="project-description">
+        <strong>Smart Study Planner</strong> is a responsive, frontend-only web app to help students plan, manage, and track their daily and weekly study goals. Missed tasks are automatically rescheduled, and progress is visualized with stats and a pie chart. Built with HTML, CSS, and JavaScript.
+      </div>
+    </div>
+    <button id="theme-toggle" class="floating-theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html> 
